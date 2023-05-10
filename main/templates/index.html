@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+    <head>
+        <meta charset="UTF-8">
+        <title>GTRK password generator</title>
+    </head>
+
+    <body>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="pwd_length" id="pwd_length">
+            <label for="pwd_length">Введите длину пароля</label>
+            <input type="checkbox" name="uppercase" id="uppercase">
+            <input type="checkbox" name="lowercase" id="lowercase">
+            <label for="uppercase">Верхний регистр</label>
+            <label for="lowercase">Нижний регистр</label>
+            <button type="submit" name="submit">ok</button>
+        </form>
+        <p id="pwd"></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="{% static 'main.js' %}"></script>
+    </body>
+</html>
