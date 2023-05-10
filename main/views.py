@@ -9,13 +9,14 @@ def main_page(request):
 
 
 def retrieve_pwd(request):
-    pwd_length = request.GET.get("pwd_length")
+    pwd_length = request.GET.get('pwd_length')
+    specs = request.GET.get('specs')
+    print('specs', specs)
     pwd = ''
     if pwd_length:
         pwd = create_pwd(
             pwd_length=int(pwd_length),
-            uppercase=False,
-            lowercase=False,
+            specs=specs,
         )
     response = {'pwd': pwd}
     return JsonResponse(response)

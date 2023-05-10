@@ -1,19 +1,38 @@
-$('#pwd_length').keyup(function () {
-    var pwd_length = $('#pwd_length').val()
-    console.log(pwd_length)
-    if(pwd_length > 20) {$('#pwd').text('Длину укороти!')}
-    else {
-    $.ajax({
-        url: "retrieve_pwd/?pwd_length=" + pwd_length,
-        data: pwd_length,
-        success: function (response) {
-            response: $('#pwd').text(response.pwd)
-            console.log(response)
-            },
-        else: function (response) {
-            console.log(response.responseJSON.errors)
-        }
+$( document ).ready(function() {
+    var checked = $('#specs').prop('checked')
+
+    $('#pwd_length').keyup(function () {
+        var pwd_length = $('#pwd_length').val()
+        if(pwd_length > 20) {$('#pwd').text('Максимальная длинна пароля - 20 символов')}
+        else {makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length)};
+        return false;
     });
+
+
+    $('#specs').change(function () {
+        var pwd_length = $('#pwd_length').val()
+        if(!checked) {
+            if(pwd_length > 20) {$('#pwd').text('Максимальная длинна пароля - 20 символов')}
+            else {makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length + '&specs=True')};
+            checked = true;
+        }
+        else {
+            makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
+            checked = false;
+            };
+        return false;
+    });
+
+
+    function makeAjaxRequest(url)  {
+        $.ajax({
+            url: url,
+            success: function (response) {
+                response: $('#pwd').text(response.pwd)
+                },
+            else: function (response) {
+                console.log(response.responseJSON.errors)
+                }
+        });
     };
-    return false;
 });
