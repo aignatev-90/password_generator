@@ -11,13 +11,7 @@ def main_page(request):
 def retrieve_pwd(request):
     pwd_length = request.GET.get("pwd_length")
     pwd = ''
-    # if request.method == 'POST':
-    #     pwd_length = request.POST.get('pwd_length')
-    #     uppercase = request.POST.get('uppercase') or None
-    #     lowercase = request.POST.get('lowercase') or None
-    #
     if pwd_length:
-        print(pwd_length)
         pwd = create_pwd(
             pwd_length=int(pwd_length),
             uppercase=False,
