@@ -7,7 +7,17 @@ $(document).ready(function () {
 
 
   var pwd_length = $("#pwd_length").val();
-  copy_link_pwd_check(pwd_length);
+  if (pwd_length > 20) {
+      $(".pwd_hint").text("Максимальная длина пароля - 20 символов");
+      pwd_length = 20
+    }
+     else if (pwd_length < 8) {
+      $(".pwd_hint").text("Минимальная длина пароля - 8 символов");
+      pwd_length = 8
+    }
+     else {
+      $(".pwd_hint").text("");
+      }
   if(!checked) {
   makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
     }
@@ -19,7 +29,6 @@ $(document).ready(function () {
     var pwd_length = $("#pwd_length").val();
     var checked = $("#specs").prop("checked");
 
-    copy_link_pwd_check(pwd_length);
     if (pwd_length > 20) {
       $(".pwd_hint").text("Максимальная длина пароля - 20 символов");
       pwd_length = 20
@@ -76,11 +85,3 @@ $(document).ready(function () {
     var pwd = $(".show_gen_pswd").html();
     navigator.clipboard.writeText(pwd);
   });
-
-  function copy_link_pwd_check(pwd_length) {
-    if (pwd_length == 0 || pwd_length > 20) {
-      $(".img_copy").css("display", "none");
-    } else {
-      $(".img_copy").css("display", "flex");
-    }
-  };
