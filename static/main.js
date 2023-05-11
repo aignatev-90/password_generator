@@ -8,17 +8,22 @@ $(document).ready(function () {
 
   var pwd_length = $("#pwd_length").val();
   copy_link_pwd_check(pwd_length);
-
+  if(!checked) {
   makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
+    }
+    else {
+    makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length + "&specs=True");
+    };
 
   $("#pwd_length").keyup(function () {
     var pwd_length = $("#pwd_length").val();
-<<<<<<< HEAD
+    var checked = $("#specs").prop("checked");
+
     copy_link_pwd_check(pwd_length);
     if (pwd_length >= 20 || pwd_length < 0) {
       $("#pwd_length").val(20);
       pwd_length = 8;
-      $(".pwd_hint").text("Максимальная длинна пароля - 20 символов");
+      $(".pwd_hint").text("Максимальная длина пароля - 20 символов");
     } else {
       $(".pwd_hint").text("");
       if (!checked) {
@@ -27,7 +32,7 @@ $(document).ready(function () {
         makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length + "&specs=True");
       }
     }
-    }
+    });
     if (!checked || pwd_length > 20) {
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
     } else {
@@ -38,19 +43,15 @@ $(document).ready(function () {
 
   $("#specs").change(function () {
     var pwd_length = $("#pwd_length").val();
+    var checked = $("#specs").prop("checked");
+
     if (!checked) {
-      if (pwd_length > 20) {
-        $(".pwd_hint").text("Максимальная длина пароля - 20 символов");
-      } else {
-        makeAjaxRequest(
-          "retrieve_pwd/?pwd_length=" + pwd_length + "&specs=True"
-        );
+        makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
       }
-      checked = true;
-    } else {
-      makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
-      checked = false;
+     else {
+      makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length + "&specs=True");
     }
+
     return false;
   });
 
@@ -77,5 +78,4 @@ $(document).ready(function () {
     } else {
       $(".img_copy").css("display", "flex");
     }
-  }
-});
+  };
