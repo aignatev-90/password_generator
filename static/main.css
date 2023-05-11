@@ -1,0 +1,223 @@
+@charset "UTF-8";
+/*
+* Переменные цветовой палитры
+*/
+/*
+* Переменные размеров
+*/
+@font-face {
+  font-family: "Lato";
+  src: url("./fonts/LatoBold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./fonts/LatoMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./fonts/LatoRegular.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./fonts/LatoHeavy.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./fonts/LatoLight.woff2") format("woff2");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: "Lato";
+  transition: all 250ms ease-in-out;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #229fff;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul > li > a:hover {
+  color: red;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Lato";
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/*
+* Размер ограничивающего контейнера
+*/
+.container {
+  max-width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/*
+* Общий стиль Input
+*/
+.base-input,
+.select {
+  border: 2px solid transparent;
+  height: 50px;
+  width: 100%;
+  background: #e1e5f2;
+  border-radius: 0.9375rem;
+  padding-left: 20px;
+  font-size: 1rem;
+  line-height: 19px;
+  color: #022b3a;
+  caret-color: #022b3a;
+}
+
+.header {
+  font-size: 1rem;
+}
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+}
+.header-main__logo {
+  min-width: 100px;
+  width: auto;
+}
+.header-nav {
+  background-color: #fff;
+  flex: 1;
+  margin-left: 20px;
+}
+.header-nav > ul {
+  display: flex;
+}
+.header-nav > ul > li {
+  margin-right: 15px;
+  font-size: 1.125rem;
+}
+.header-nav > ul > li > a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 22px;
+  color: #022b3a;
+}
+.header-nav > ul > li > a:hover {
+  color: #229fff;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(2, 43, 58, 0.2);
+  align-items: center;
+  flex-grow: 1;
+}
+.modal-title {
+  font-weight: 700;
+  font-size: clamp(22px, 0.34vh + 10px, 50px);
+  line-height: 46px;
+  color: #022b3a;
+  padding-top: 100px;
+  padding-bottom: 25px;
+}
+
+.footer-main {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-main__reserved {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #022b3a;
+}
+.footer-main__reserved > span {
+  font-weight: bold;
+}
+
+/* 
+* Стили генерации пароля
+*/
+
+.show_gen_pswd {
+  font-size: 50px;
+}
+
+#pwd_length {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 40px;
+  width: 100%;
+}
+
+.post {
+  min-width: 600px;
+  background-color: white;
+  padding: 60px;
+  border-radius: 15px;
+}
+
+.checkbox{
+  margin-top: 20px;
+}
+
+.copy_pswd {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+}
+.copy_pswd img {
+  display: none;
+  flex-direction: row;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* input[type=number]::-webkit-inner-spin-button {
+  height: 20px;
+  width: 20px;
+} */

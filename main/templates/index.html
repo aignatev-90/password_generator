@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
+  {% load static %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>GTRK password generator</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>GTRK password generator</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+  </head>
 
-    <body>
+  <body>
+    <section class="header">
+      <div class="container">
+        <div class="header-main">
+          <a class="header-main__logo" href="#"
+            ><img src="{% static './images/Logo.svg' %}" alt=""
+          /></a>
+        </div>
+      </div>
+    </section>
+    <section class="modal">
+      <div class="modal-title"><h1>Генератор паролей</h1></div>
+      <form class="post" method="post">
+        {% csrf_token %}
+        <input
+          placeholder="Введите длину пароля"
+          type="number"
+          min="0"
+          max="20"
+          step="1"
+          name="pwd_length"
+          id="pwd_length"
+        />
+        <!-- <label class="hint" for="pwd_length">Введите длину пароля</label> -->
+        <div class="checkbox">
+          <input type="checkbox" name="specs" id="specs" />
+          <label for="specs">Добавить спецсимволы</label>
+        </div>
+      </form>
+      <div class="copy_pswd">
+        <p class="show_gen_pswd" id="pwd"></p>
+        <img class="img_copy" src="{% static './images/copy.png' %}" alt="" />
+      </div>
+    </section>
+    <section class="footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-main__reserved">
+            Все права защищены <span>2023 г.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./main.js"></script>
 
-        <form method="post">
-            {% csrf_token %}
-            <input placeholder="Введите число" type="number" min="0" step="1" name="pwd_length" id="pwd_length">
-            <label for="pwd_length">Введите длину пароля</label>
-            <br>
-
-            <br>
-            <input type="checkbox" name="specs" id="specs">
-            <label for="specs">Добавить спецсимволы</label>
-        </form>
-
-        <p id="pwd"></p>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="{% static 'main.js' %}"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="{% static 'main.js' %}"></script>
+  </body>
 </html>
