@@ -12,10 +12,22 @@ def create_pwd(pwd_length: int, specs: bool) -> str:
     pwd = ''
     for i in range(pwd_length):
         if specs:
-            print(specs)
-            pwd += ''.join(secrets.choice(specs_alphabet))
+            pwd = create_pwd_with_specs(pwd, specs_alphabet, special_chars, pwd_length)
         else:
-            print('no specs')
             pwd += ''.join(secrets.choice(no_specs_alphabet))
     return pwd
 
+
+def create_pwd_with_specs(
+        pwd: str,
+        full_alphabet: str,
+        specs_alph: str,
+        pwd_length: int
+) -> str:
+    """Guarantees that even very short password
+     will contain at least one special symbol"""
+    while not any(letter in specs_alph for letter in pwd):
+        pwd = ''
+        for i in range(pwd_length):
+            pwd += ''.join(secrets.choice(full_alphabet))
+    return pwd
