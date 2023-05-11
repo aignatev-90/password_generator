@@ -26,7 +26,7 @@
           <img class="img_copy" src="{% static './images/copy.png' %}" alt="" />
         </div>
         <div class="pswd_block">
-          <p>Длинна пароля</p>
+          <p>Длина пароля</p>
           <form class="post" method="post">
             {% csrf_token %}
             <input
@@ -34,8 +34,12 @@
               max="20"
               value="8"
               type="number"
+              inputmode="numeric"
+              oninput="this.value = this.value.replace(/\D+/g, '')"
+              step="1"
               name="pwd_length"
               id="pwd_length"
+              value="10"
             />
             <div class="checkbox">
               <input type="checkbox" name="specs" id="specs" />
