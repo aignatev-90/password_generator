@@ -9,13 +9,15 @@ $(document).ready(function () {
   $("#pwd_length").keyup(function () {
     var pwd_length = $("#pwd_length").val();
     copy_link_pwd_check(pwd_length);
-    if (pwd_length > 20) {
+    if (pwd_length >= 20 || pwd_length < 0) {
+      $("#pwd_length").val(20);
+      pwd_length = 8;
       $(".pwd_hint").text("Максимальная длинна пароля - 20 символов");
     } else {
       $(".pwd_hint").text("");
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
     }
-    if (!checked) {
+    if (!checked || pwd_length > 20) {
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
     } else {
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length + "&specs=True");
