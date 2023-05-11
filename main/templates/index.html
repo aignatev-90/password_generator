@@ -19,27 +19,33 @@
       </div>
     </section>
     <section class="modal">
-      <div class="modal-title"><h1>Генератор паролей</h1></div>
-      <form class="post" method="post">
-        {% csrf_token %}
-        <input
-          placeholder="Введите длину пароля"
-          type="number"
-          min="0"
-          max="20"
-          step="1"
-          name="pwd_length"
-          id="pwd_length"
-        />
-        <!-- <label class="hint" for="pwd_length">Введите длину пароля</label> -->
-        <div class="checkbox">
-          <input type="checkbox" name="specs" id="specs" />
-          <label for="specs">Добавить спецсимволы</label>
+      <div class="container">
+        <div class="modal-title"><h1>Генератор паролей</h1></div>
+        <div class="copy_pswd">
+          <p class="show_gen_pswd" id="pwd"></p>
+          <img class="img_copy" src="{% static './images/copy.png' %}" alt="" />
         </div>
-      </form>
-      <div class="copy_pswd">
-        <p class="show_gen_pswd" id="pwd"></p>
-        <img class="img_copy" src="{% static './images/copy.png' %}" alt="" />
+        <div class="pswd_block">
+          <p>Длинна пароля</p>
+          <form class="post" method="post">
+            {% csrf_token %}
+            <input
+              max="20"
+              type="text"
+              pattern="[0-9]"
+              name="pwd_length"
+              id="pwd_length"
+            />
+            <div class="checkbox">
+              <input type="checkbox" name="specs" id="specs" />
+              <label for="specs">Добавить спецсимволы</label>
+            </div>
+        </div>
+        
+          <!-- <label class="hint" for="pwd_length">Введите длину пароля</label> -->
+          
+        </form>
+        <div class="pwd_hint"></div>
       </div>
     </section>
     <section class="footer">
@@ -54,6 +60,6 @@
     <script src="./main.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'main.js' %}" defer></script>
   </body>
 </html>

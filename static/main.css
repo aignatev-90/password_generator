@@ -152,6 +152,7 @@ body {
   flex-grow: 1;
 }
 .modal-title {
+  text-align: center;
   font-weight: 700;
   font-size: clamp(22px, 0.34vh + 10px, 50px);
   line-height: 46px;
@@ -188,25 +189,44 @@ body {
   border: none;
   background: transparent;
   outline: none;
-  font-size: 40px;
-  width: 100%;
+  font-size: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  padding: 5px;
+  flex-basis: 100px;
+  width: 110px;
+}
+
+.pswd_block{
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.pswd_block p {
+  margin-bottom: 15px;
 }
 
 .post {
-  min-width: 600px;
-  background-color: white;
-  padding: 60px;
-  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  min-width: 650px;
+  justify-content: space-between;
 }
 
-.checkbox{
-  margin-top: 20px;
+.checkbox {
+  margin-left: 15px;
 }
 
 .copy_pswd {
   display: flex;
   flex-direction: row;
-  margin-top: 100px;
+  justify-content: center;
+  height: 80px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
 }
 .copy_pswd img {
   display: none;
@@ -215,6 +235,19 @@ body {
   height: 30px;
   cursor: pointer;
   margin-left: 20px;
+}
+
+.pwd_hint {
+  margin-top: 10px;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
 }
 
 /* input[type=number]::-webkit-inner-spin-button {

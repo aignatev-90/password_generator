@@ -2,6 +2,7 @@ $(document).ready(function () {
   var checked = $("#specs").prop("checked");
 
   $("#pwd_length").keyup(function () {
+    
     var pwd_length = $("#pwd_length").val();
     if (pwd_length == 0 || pwd_length > 20){
         $(".img_copy").css("display", "none");
@@ -9,8 +10,9 @@ $(document).ready(function () {
         $(".img_copy").css("display", "flex"); 
     }
     if (pwd_length > 20) {
-      $("#pwd").text("");
+      $(".pwd_hint").text("Максимальная длинна пароля - 20 символов");
     } else {
+      $(".pwd_hint").text("");
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
     }
     return false;
@@ -20,7 +22,7 @@ $(document).ready(function () {
     var pwd_length = $("#pwd_length").val();
     if (!checked) {
       if (pwd_length > 20) {
-        $("#pwd").text("Максимальная длинна пароля - 20 символов");
+        $(".pwd_hint").text("Максимальная длинна пароля - 20 символов");
       } else {
         makeAjaxRequest(
           "retrieve_pwd/?pwd_length=" + pwd_length + "&specs=True"
