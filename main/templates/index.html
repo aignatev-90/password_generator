@@ -18,40 +18,48 @@
         </div>
       </div>
     </section>
+
     <section class="modal">
       <div class="container">
-        <div class="modal-title"><h1>Генератор паролей</h1></div>
+        <div class="modal-title">
+          <h1>Генератор паролей</h1>
+        </div>
         <div class="copy_pswd">
           <p class="show_gen_pswd" id="pwd"></p>
           <img class="img_copy" src="{% static './images/copy.png' %}" alt="" />
         </div>
         <div class="pswd_block">
-          <p>Длина пароля</p>
           <form class="post" method="post">
             {% csrf_token %}
-            <input
-              min = "0"
-              max="20"
-              value="8"
-              type="number"
-              inputmode="numeric"
-              oninput="this.value = this.value.replace(/\D+/g, '')"
-              step="1"
-              name="pwd_length"
-              id="pwd_length"
-            />
+            <p>Длина пароля</p>
+            <div class="number-input">
+              <button  class="minus">-</button>
+              <input
+                min="8"
+                max="20"
+                value="8"
+                type="number"
+                inputmode="numeric"
+                oninput="this.value = this.value.replace(/\D+/g, '')"
+                step="1"
+                name="pwd_length"
+                id="pwd_length"
+              />
+              <button class="plus">+</button>
+            </div>
+
             <div class="checkbox">
               <input type="checkbox" name="specs" id="specs" />
               <label for="specs">Добавить спецсимволы</label>
             </div>
+
+            <!-- <label class="hint" for="pwd_length">Введите длину пароля</label> -->
+          </form>
         </div>
-        
-          <!-- <label class="hint" for="pwd_length">Введите длину пароля</label> -->
-          
-        </form>
         <div class="pwd_hint"></div>
       </div>
     </section>
+
     <section class="footer">
       <div class="container">
         <div class="footer-main">
