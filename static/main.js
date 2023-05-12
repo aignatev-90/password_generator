@@ -47,11 +47,12 @@ $(document).ready(function () {
   }
 
   /*
-   * START Обработка событий при нажатии кнопок увеличения и уменьшения длинны пароля
+   * START Обработка событий при нажатии увеличения и уменшения значений пароля
    */
 
   $(".plus").click(function () {
     var pwd_length = $("#pwd_length").val();
+    var checked = $("#specs").prop("checked");
     this.parentNode.querySelector("input[type=number]").stepUp();
     if (!checked) {
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
@@ -63,6 +64,7 @@ $(document).ready(function () {
   });
   $(".minus").click(function () {
     var pwd_length = $("#pwd_length").val();
+    var checked = $("#specs").prop("checked");
     this.parentNode.querySelector("input[type=number]").stepDown();
     if (!checked) {
       makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
@@ -71,8 +73,8 @@ $(document).ready(function () {
     }
     return false;
   });
-  /*
-   * FINISH Обработка событий при нажатии кнопок увеличения и уменьшения длинны пароля
+    /*
+   * FINISH Обработка событий при нажатии увеличения и уменшения значений пароля
    */
   return false;
 });
@@ -89,6 +91,8 @@ $("#specs").change(function () {
 
   return false;
 });
+
+
 
 function makeAjaxRequest(url) {
   $.ajax({
