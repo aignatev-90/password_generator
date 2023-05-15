@@ -4,7 +4,6 @@ $(document).ready(function () {
 
   makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
 
-  $(".img_copy").show();
 
   if (!checked) {
     makeAjaxRequest("retrieve_pwd/?pwd_length=" + pwd_length);
@@ -29,7 +28,6 @@ $(document).ready(function () {
 
   $(".plus").click(function () {
     var pwd_length = correct_pwd_length($("#pwd_length").val());
-    console.log('pwd_length', pwd_length)
     var checked = $("#specs").prop("checked");
     this.parentNode.querySelector("input[type=number]").stepUp();
     if (!checked) {
@@ -77,13 +75,11 @@ $("#specs").change(function () {
 
 function correct_pwd_length(user_entrance_length) {
     if (user_entrance_length > 20) {
-      console.log('user_ent_20', user_entrance_length)
       var pwd_length = 20
       $("#pwd_length").val(pwd_length)
       $(".pwd_hint").text("Максимальная длина пароля - 20 символов");
     }
     else if (user_entrance_length < 8) {
-      console.log('user_ent_8', user_entrance_length)
       var pwd_length = 8
       $("#pwd_length").val(pwd_length)
       $(".pwd_hint").text("Минимальная длина пароля - 8 символов");
@@ -112,8 +108,7 @@ function makeAjaxRequest(url) {
 }
 
 $(".img_copy").on("click", function () {
+  $(".img_copy").fadeOut(50).delay(40).fadeIn(50);
   var pwd = $(".show_gen_pswd").html();
   navigator.clipboard.writeText(pwd);
 });
-
-
